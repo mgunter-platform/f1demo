@@ -1,2 +1,10 @@
-/Users/mattgunter/Downloads/task/src/main/java/com/acmecorp/StreamingJob.java
-/Users/mattgunter/Downloads/task/src/main/java/com/acmecorp/provided/ClickEventGenerator.java
+/Users/mattgunter/Projects/f1demo/src/main/java/com/mgunter/f1streamcode/ValidateF1ByteStream.java
+/Users/mattgunter/Projects/f1demo/src/main/java/com/mgunter/f1streamcode/StreamingJob.java
+/Users/mattgunter/Projects/f1demo/src/main/java/com/mgunter/provided/ClickEventGenerator.java
+/Users/mattgunter/Projects/f1demo/src/main/java/com/mgunter/f1streamcode/DeserializeF1ByteStream.java
+/Users/mattgunter/Projects/f1demo/src/main/java/com/mgunter/f1streamcode/RaceInfo.java
+/Users/mattgunter/Projects/f1demo/src/main/java/com/mgunter/f1streamcode/MeasureGapJob.java
+/Users/mattgunter/Projects/f1demo/src/main/java/com/mgunter/f1streamcode/MonitorGapToCSVJob.java
+/Users/mattgunter/Projects/f1demo/src/main/java/com/mgunter/f1streamcode/FindFollowerJob.java
+/Users/mattgunter/Projects/f1demo/src/main/java/com/mgunter/f1streamcode/MonitorGapJob.java
+/Users/mattgunter/Projects/f1demo/src/main/java/com/mgunter/f1streamcode/RaceInfoEvent.java

@@ -87,7 +87,7 @@ public class MonitorGapJob {
 
         // Create Kafka Consumer
         System.out.println("instantiating Kafka Consumer");
-        //ArrayList<RaceInfo> raceInfoArray = new ArrayList<RaceInfo>();
+        //ArrayList<RaceInfo> raceInfoArray = new f1d   ArrayList<RaceInfo>();
 
         FlinkKafkaConsumer<byte[]> kafkaConsumer =
                 new FlinkKafkaConsumer<>("f1-telemetry-drivers", new AbstractDeserializationSchema<byte[]>() {
@@ -154,6 +154,7 @@ public class MonitorGapJob {
 
             if (evt.getParticipantData().getDriverId().toString().equalsIgnoreCase(driverId) ) {
                 mgRaceInfo = new com.mgunter.f1streamcode.RaceInfo(evt.getParticipantData().getDriverId().toString());
+                mgRaceInfo.setDriverDetails(evt);
                 mgRaceInfo.setLap( new Short(evt.getLapData().getCurrentLapNum() ).intValue() );
                 mgRaceInfo.setLapPosition( evt.getLapData().getLapDistance() );
                 mgRaceInfo.setCarPosition( new Short(evt.getLapData().getCarPosition() ).intValue() );
@@ -171,6 +172,7 @@ public class MonitorGapJob {
                     && (followerRaceInfo.getDriverId() == "NOFOLLOWER") && mgRaceInfo.getCarPosition()!=0
                     && mgRaceInfo.getCarPosition()< (new Short(evt.getLapData().getCarPosition() ).intValue())) {
                 followerRaceInfo = new com.mgunter.f1streamcode.RaceInfo(evt.getParticipantData().getDriverId().toString());
+                followerRaceInfo.setDriverDetails(evt);
                 followerRaceInfo.setLap( new Short(evt.getLapData().getCurrentLapNum() ).intValue() );
                 followerRaceInfo.setLapPosition( evt.getLapData().getLapDistance() );
                 followerRaceInfo.setCarPosition( new Short(evt.getLapData().getCarPosition() ).intValue() );
@@ -185,6 +187,7 @@ public class MonitorGapJob {
                     && (evt.getLapData().getCarPosition() <= followerRaceInfo.getCarPosition()))
             {
                 followerRaceInfo = new com.mgunter.f1streamcode.RaceInfo(evt.getParticipantData().getDriverId().toString());
+                followerRaceInfo.setDriverDetails(evt);
                 followerRaceInfo.setLap( new Short(evt.getLapData().getCurrentLapNum() ).intValue() );
                 followerRaceInfo.setLapPosition( evt.getLapData().getLapDistance() );
                 followerRaceInfo.setCarPosition( new Short(evt.getLapData().getCarPosition() ).intValue() );
@@ -206,6 +209,7 @@ public class MonitorGapJob {
                     && (leaderRaceInfo.getDriverId() == "NOLEADER")
                     && mgRaceInfo.getCarPosition()> (new Short(evt.getLapData().getCarPosition() ).intValue())) {
                 leaderRaceInfo = new com.mgunter.f1streamcode.RaceInfo(evt.getParticipantData().getDriverId().toString());
+                leaderRaceInfo.setDriverDetails(evt);
                 leaderRaceInfo.setLap( new Short(evt.getLapData().getCurrentLapNum() ).intValue() );
                 leaderRaceInfo.setLapPosition( evt.getLapData().getLapDistance() );
                 leaderRaceInfo.setCarPosition( new Short(evt.getLapData().getCarPosition() ).intValue() );
@@ -220,6 +224,7 @@ public class MonitorGapJob {
                     && (evt.getLapData().getCarPosition() >= leaderRaceInfo.getCarPosition()))
             {
                 leaderRaceInfo = new com.mgunter.f1streamcode.RaceInfo(evt.getParticipantData().getDriverId().toString());
+                leaderRaceInfo.setDriverDetails(evt);
                 leaderRaceInfo.setLap( new Short(evt.getLapData().getCurrentLapNum() ).intValue() );
                 leaderRaceInfo.setLapPosition( evt.getLapData().getLapDistance() );
                 leaderRaceInfo.setCarPosition( new Short(evt.getLapData().getCarPosition() ).intValue() );
@@ -282,7 +287,7 @@ public class MonitorGapJob {
             }
 
             currentSet.setField(mgState,1);
-            out.collect(evt);
+            out.collect(currentSet);
 
         }
     }

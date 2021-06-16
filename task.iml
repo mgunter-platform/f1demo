@@ -98,5 +98,6 @@
     <orderEntry type="library" name="Maven: org.lz4:lz4-java:1.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.flink:flink-connector-kafka_2.11:1.13.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.flink:flink-connector-base:1.13.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.flink:flink-cep_2.11:1.12.3" level="project" />
   </component>
 </module>
